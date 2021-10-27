@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "vortex",
+  "version": "${version}",
+
+  "name": "Vortex",
+  "description": "Harness the power of interdimensional vortexes!",
+  "authors": [
+    "PrismaticYT"
+  ],
+  "contact": {
+    "sources": "https://github.com/RPMYT/Vortex"
+  },
+  "license": "GPLv3",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.lilydev.vortex.Vortex"
+    ],
+    "client": [
+      "net.lilydev.vortex.client.VortexClient"
+    ]
+  },
+  "mixins": [
+    "vortex.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  }
+}
