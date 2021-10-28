@@ -2,11 +2,14 @@ package net.lilydev.vortex;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.lilydev.vortex.block.entity.GatewayManipulatorCoreBlockEntity;
 import net.lilydev.vortex.block.machine.GatewayManipulatorCoreBlock;
 import net.lilydev.vortex.fluid.OilFluid;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.FluidBlock;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BucketItem;
@@ -80,10 +83,30 @@ public class Vortex implements ModInitializer {
         }
     }
 
+    public static class BlockEntities {
+        private static final HashMap<String, BlockEntityType<? extends BlockEntity>> blockEntities = new HashMap<>();
+
+        private static <T extends BlockEntity> BlockEntityType<T> add(String name, BlockEntityType<T> type) {
+            blockEntities.put(name, type);
+            return type;
+        }
+
+        public static BlockEntityType<GatewayManipulatorCoreBlockEntity> GATEWAY_MANIPULATOR = add("gateway_manipulator_blockentity", FabricBlockEntityTypeBuilder.create(GatewayManipulatorCoreBlockEntity::new, Blocks.GATEWAY_MANIPULATOR).build(null));
+
+        public static void register() {
+            LOGGER.info("Registering block entities!");
+            blockEntities.forEach((name, type) -> {
+                LOGGER.debug("Registering block entity '" + name + "'...");
+                Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("vortex", name), type);
+            });
+        }
+    }
+
     @Override
     public void onInitialize() {
         Items.register();
         Blocks.register();
+        BlockEntities.register();
         Fluids.register();
     }
 }
