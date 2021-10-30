@@ -1,9 +1,10 @@
-  {
+{
   "required": true,
   "minVersion": "0.8",
   "package": "net.lilydev.vortex.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "EndGatewayFuseMixin",
     "OilDecayMixin",
     "VolatileFluidExplosionChainingMixin",
     "VolatileFluidIgnitionMixin"

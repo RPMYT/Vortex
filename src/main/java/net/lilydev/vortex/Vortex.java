@@ -3,8 +3,8 @@ package net.lilydev.vortex;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.lilydev.vortex.block.entity.GatewayManipulatorCoreBlockEntity;
-import net.lilydev.vortex.block.machine.GatewayManipulatorCoreBlock;
+import net.lilydev.vortex.block.entity.VortexBlockEntity;
+import net.lilydev.vortex.block.machine.VortexBlock;
 import net.lilydev.vortex.fluid.OilFluid;
 import net.minecraft.block.Block;
 import net.minecraft.block.FluidBlock;
@@ -72,7 +72,7 @@ public class Vortex implements ModInitializer {
         }
 
         public static final FluidBlock OIL = (FluidBlock) add("oil", new FluidBlock((FlowableFluid) Fluids.OIL_STILL, FabricBlockSettings.copy(net.minecraft.block.Blocks.WATER).resistance(0)){});
-        public static final GatewayManipulatorCoreBlock GATEWAY_MANIPULATOR = (GatewayManipulatorCoreBlock) add("gateway_manipulator", new GatewayManipulatorCoreBlock(FabricBlockSettings.copyOf(net.minecraft.block.Blocks.END_GATEWAY)));
+        public static final VortexBlock VORTEX = (VortexBlock) add("vortex", new VortexBlock(FabricBlockSettings.copyOf(net.minecraft.block.Blocks.END_GATEWAY)));
         
         public static void register() {
             LOGGER.info("Registering blocks!");
@@ -91,7 +91,7 @@ public class Vortex implements ModInitializer {
             return type;
         }
 
-        public static BlockEntityType<GatewayManipulatorCoreBlockEntity> GATEWAY_MANIPULATOR = add("gateway_manipulator_blockentity", FabricBlockEntityTypeBuilder.create(GatewayManipulatorCoreBlockEntity::new, Blocks.GATEWAY_MANIPULATOR).build(null));
+        public static BlockEntityType<VortexBlockEntity> VORTEX = add("vortex_blockentity", FabricBlockEntityTypeBuilder.create(VortexBlockEntity::new, Blocks.VORTEX).build(null));
 
         public static void register() {
             LOGGER.info("Registering block entities!");
