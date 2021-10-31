@@ -1,0 +1,6 @@
+- Space dimension:
+  - Hollow Stars:
+    - Semi-rare, contain a boss
+    - Once boss is defeated player has 2 minutes to escape
+    - If the player doesn't escape, they die
+    - If they successfully escape, the star has a chance to spawn a black hole
